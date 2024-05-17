@@ -22,14 +22,14 @@
 # Inbox ~/Maildir/TU/Inbox
 # 
 # Channel gmail-tu
-# Master :gmail-tu-remote:
-# Slave :gmail-tu-local:
+# Far :gmail-tu-remote:
+# Near :gmail-tu-local:
 # # Exclude everything under the internal [Gmail] folder, except the interesting folders
 # Patterns "INBOX" "[Gmail]/Sent Mail" "[Gmail]/All Mail"
 # # Or include everything
 # #Patterns *
 # # Automatically create missing mailboxes, both locally and on the server
-# Create Slave
+# Create Near
 # # Save the synchronization state files in the relevant directory
 # SyncState *
 # Expunge Both
@@ -59,14 +59,14 @@ Path ~/Maildir/KKU/
 Inbox ~/Maildir/KKU/Inbox
 
 Channel gmail-kku
-Master :gmail-kku-remote:
-Slave :gmail-kku-local:
+Far :gmail-kku-remote:
+Near :gmail-kku-local:
 # Exclude everything under the internal [Gmail] folder, except the interesting folders
 Patterns "INBOX" "[Gmail]/Sent Mail" "[Gmail]/All Mail"
 # Or include everything
 #Patterns *
 # Automatically create missing mailboxes, both locally and on the server
-Create Slave
+Create Near
 # Save the synchronization state files in the relevant directory
 SyncState *
 Expunge Both
