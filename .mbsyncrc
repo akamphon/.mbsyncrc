@@ -5,8 +5,8 @@
 # # To store the password in an encrypted file use PassCmd instead of Pass
 # PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/pw-tu.gpg"
 # #
-# # Use SSL
-# SSLType IMAPS
+# # Use TLS as SSL is deprecated
+# TLSType IMAPS
 # # The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
 # CertificateFile /etc/ssl/certs/ca-certificates.crt
 # #CertificateFile ~/.cert/imap.gmail.com.pem
@@ -39,13 +39,14 @@ IMAPAccount gmail-kku
 # Address to connect to
 Host imap.gmail.com
 User sappak@kku.ac.th
+AuthMechs LOGIN
 # To store the password in an encrypted file use PassCmd instead of Pass
 PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/pw-kku.gpg"
 #
-# Use SSL
-SSLType IMAPS
+# Use TLS
+TLSType IMAPS
 # The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
-CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile /etc/ssl/certs/ca-certificates.crt
 #CertificateFile ~/.cert/imap.gmail.com.pem
 #CertificateFile ~/.cert/Equifax_Secure_CA.pem
 
@@ -62,12 +63,12 @@ Channel gmail-kku
 Far :gmail-kku-remote:
 Near :gmail-kku-local:
 # Exclude everything under the internal [Gmail] folder, except the interesting folders
-Patterns "INBOX" "[Gmail]/Sent Mail" "[Gmail]/All Mail"
+Patterns "[Gmail]/All Mail" "[Gmail]/Trash"
 # Or include everything
 #Patterns *
 # Automatically create missing mailboxes, both locally and on the server
 Create Near
+Expunge Both
 # Save the synchronization state files in the relevant directory
 SyncState *
-Expunge Both
-
+CopyArrivalDate yes
